@@ -1,0 +1,1270 @@
+/* Port Moresby Christian Academy — foundation styles
+/* ---- Custom properties ---- */
+/* Used in: every page — the design tokens referenced by all rules below. */
+:root {
+  /* Colour tokens */
+  --sea-deep: #15181B;       /* near-black — navbar, footer, hero overlay */
+  --sea: #23262B;            /* secondary dark neutral */
+  --gold: #B35900;           /* accent orange — 4.8:1 on white, AA for body text */
+  --gold-hover: #8F4700;     /* darker orange — hover/active state, 6.8:1 on white */
+  --gold-soft: #FFD9A8;      /* light orange — accent text on dark backgrounds */
+  --paper: #FFFFFF;
+  --tint: #F8F9FA;
+  --mint: #EAF7EA;
+  --sky: #E8F4F8;
+  --surface: #FFFFFF;
+  --stone: #E5E7EB;
+  --text: #202225;
+  --muted: #55595E;
+
+  /* Type — system font stack, matching the reference site (no webfont) */
+  --font-display: system-ui, -apple-system, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Type scale — fluid between mobile and desktop, sized up for laptop viewing */
+  --h1: clamp(2.4rem, 1.7rem + 2.9vw, 4.2rem);
+  --h2: clamp(1.95rem, 1.6rem + 1.5vw, 2.85rem);
+  --h3: clamp(1.4rem, 1.25rem + 0.6vw, 1.7rem);
+  --body: clamp(1.05rem, 1rem + 0.2vw, 1.2rem);
+  --small: clamp(0.95rem, 0.9rem + 0.1vw, 1.05rem);
+
+  /* Spacing scale — the larger steps are fluid so section padding
+     shrinks on narrow/mobile screens instead of staying desktop-sized */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
+  --space-6: clamp(2rem, 1.3rem + 3vw, 4rem);
+  --space-7: clamp(2.5rem, 1.3rem + 5vw, 6.25rem);
+
+  /* Layout */
+  --measure: 34rem;
+  --container: 72rem;
+  --radius: 8px;
+  --radius-full: 50%;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+/* ---- Reset ---- */
+/* Used in: every page — browser default reset, no page-specific markup. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: clamp(17px, 15px + 0.6vw, 20px);
+  -webkit-text-size-adjust: 100%;
+  background: var(--paper);
+  scroll-behavior: smooth;
+}
+
+body, h1, h2, h3, p, ul, ol, figure, blockquote {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---- Base ---- */
+/* Used in: every page — default body copy and h1/h2/h3 styling (<main> content on all 6 pages). */
+body {
+  font-family: var(--font-body);
+  font-size: var(--body);
+  line-height: 1.6;
+  color: var(--muted);
+  background: var(--paper);
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  color: var(--text);
+}
+
+h1 { font-size: var(--h1); font-weight: 800; }
+h2 { font-size: var(--h2); font-weight: 700; }
+h3 { font-size: var(--h3); font-weight: 700; }
+
+small, .small {
+  font-size: var(--small);
+}
+
+/* ---- Container ---- */
+/* Used in: every page — the <div class="wrap"> inside every <header>, <section> and <footer>. */
+.wrap {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+/* ---- Focus ---- */
+/* Used in: every page — keyboard focus ring on links, buttons and form fields. */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---- Todo placeholder ---- */
+/* Used in: every page — the yellow-highlight <span class="todo"> markers tracked in TODO.md. */
+.todo {
+  background: #FFF3B0;
+  color: var(--text);
+  padding: 0 0.2em;
+  border-radius: var(--radius);
+}
+
+/* ---- Skip link ---- */
+/* Used in: every page — the <a class="skip-link"> right after <body>, before the header. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--gold);
+  color: #fff;
+  padding: 0.75em 1.25em;
+  font-weight: 700;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ---- Header ---- */
+/* Used in: every page — <header class="site-header"> (logo, .nav-desktop primary nav, .header-actions). */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(21, 24, 27, 0.96);
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+@media (min-width: 900px) {
+  .header-inner { height: 80px; }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.logo-sub {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--gold-soft);
+}
+
+.nav-desktop { display: none; }
+
+@media (min-width: 900px) {
+  .nav-desktop {
+    display: block;
+    flex: 1;
+    margin-left: var(--space-6);
+  }
+  .nav-desktop ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  .nav-desktop a {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius);
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(1.1rem, 1rem, 1.3rem);
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+  .nav-desktop a:hover {
+    color: var(--gold-soft);
+    background: rgba(184, 226, 31, 0.08);
+    transform: translateY(-2px);
+  }
+  .nav-desktop a.active {
+    color: var(--gold-soft);
+    background: rgba(209, 106, 3, 0.35);
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ---- Hamburger ---- */
+/* Used in: every page — the <button id="menu-toggle"> in .header-actions (opens .mobile-panel via js/nav.js). */
+.hamburger {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .hamburger { display: none; }
+}
+
+.hamburger-icon {
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+  transition: background 0.2s ease-out;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.2s ease-out;
+}
+
+.hamburger-icon::before { top: -7px; }
+.hamburger-icon::after { top: 7px; }
+
+.hamburger[aria-expanded="true"] .hamburger-icon {
+  background: transparent;
+}
+
+.hamburger[aria-expanded="true"] .hamburger-icon::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] .hamburger-icon::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Mobile overlay panel ---- */
+/* Used in: every page — <div id="mobile-panel"> right after the header, toggled by js/nav.js. */
+html.scroll-lock,
+html.scroll-lock body {
+  overflow: hidden;
+}
+
+.mobile-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--sea-deep);
+  color: #fff;
+  padding: var(--space-6) 1.25rem var(--space-4);
+  overflow-y: auto;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.2s ease-out, visibility 0s linear 0.2s;
+}
+
+.mobile-panel.open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.2s ease-out;
+}
+
+.mobile-panel nav ul li a {
+  display: block;
+  font-size: 1.35rem;
+  padding: 20px 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.mobile-panel nav ul li a.active { color: var(--gold-soft); }
+
+.mobile-panel-footer {
+  border-top: 1px solid var(--sea);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--gold-soft);
+}
+
+.mobile-panel-footer a { color: #fff; text-decoration: underline; }
+
+/* ---- Footer ---- */
+/* Used in: every page — <footer class="site-footer"> (.footer-cols brand + Quick links columns,
+   .social-icons row, .footer-copyright bar). */
+.site-footer {
+  background: var(--sea-deep);
+  color: #ddd;
+  margin-top: var(--space-7);
+}
+
+.footer-top {
+  padding: var(--space-6) 0 var(--space-5);
+}
+
+.footer-cols {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+  .footer-cols { grid-template-columns: 1.3fr 1fr; }
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-3);
+}
+
+.footer-brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+}
+
+.footer-brand span {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.footer-col h3 {
+  font-size: 1.3rem;
+  color: var(--gold-soft);
+  margin-bottom: var(--space-3);
+}
+
+.footer-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.site-footer a {
+  color: #ddd;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--gold-soft);
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: var(--space-3);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--sea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dddddd;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.3s ease;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.social-icon:hover {
+  background: var(--gold);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.footer-copyright {
+  text-align: center;
+  padding: var(--space-4) 0;
+  background: #0F1113;
+  border-top: 1px solid var(--sea);
+}
+
+.footer-copyright p {
+  font-size: 0.95rem;
+  color: #999;
+  margin: 0;
+}
+
+/* ---- Buttons ----
+   .btn-gold      — index.html hero + "How to enrol" CTA; contact.html "Send Message" submit
+   .btn-outline   — index.html hero "How to enrol" link (sits on the dark hero image)
+   .btn-outline-sea — index.html "Life at PMCA" link; enrolment.html "Download enrolment form" link
+*/
+.btn,
+.btn-outline-sea {
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+.btn:hover,
+.btn-outline-sea:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85em 1.75em;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-align: center;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(179, 89, 0, 0.3);
+}
+
+.btn-gold:hover {
+  background: var(--gold-hover);
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: var(--sea-deep);
+}
+
+.btn-outline-sea {
+  display: inline-block;
+  padding: 0.85em 1.75em;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+.btn-outline-sea:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* ---- Hero ---- */
+/* Used in: every page — the <section class="hero"> right after the mobile panel.
+   .hero--tall (near-full-viewport) is only used on index.html; other pages use the shorter default.
+   .notice (the "Enrolments are open" banner) also appears inside the hero on index.html + enrolment.html. */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--sea-deep);
+  color: #fff;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) 0;
+  text-align: center;
+}
+
+.hero--tall {
+  min-height: 92vh;
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: auto; }
+  .hero--tall { min-height: auto; }
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-media picture,
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(21, 24, 27, 0.6), rgba(21, 24, 27, 0.75));
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero-text {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.hero h1 { color: #fff; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); }
+
+.hero p.measure {
+  color: #fff;
+  margin-top: var(--space-3);
+  margin-inline: auto;
+  font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.4rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.notice {
+  margin-top: var(--space-5);
+  background: var(--surface);
+  color: var(--text);
+  border-left: 4px solid var(--gold);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  text-align: left;
+}
+
+/* ---- Sections ---- */
+/* Used in: every page — the <section class="section section--*"> wrapper around each content
+   block (.section--paper/tint/mint/sky pick the background; .section--center centers the text). */
+.section {
+  padding: var(--space-7) 0;
+}
+
+.section h2 {
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+/* Intro paragraph directly under a section heading (e.g. "Students follow the
+   Papua New Guinea national curriculum...") — centered site-wide like sris.info's
+   .welcome/.about/.section-title paragraphs. Scoped to a direct child of .wrap so
+   it doesn't reach into cards, tables, forms or the alt-section image/text rows,
+   which sris.info itself keeps left-aligned. */
+.section > .wrap > p {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* Lists directly under a section heading. Grid-based lists (.value-grid) are
+   already centered per-card, so this only needs to reposition the narrower,
+   .measure-width lists (numbered steps, the history timeline) into the middle
+   of the section — their own item text/markers stay left-aligned for
+   readability, same as sris.info leaves list-style content unreversed. Scoped
+   to a direct child of .wrap so the "How to enrol" steps list inside the
+   alt-section on index.html (sitting beside an image) is left untouched. */
+.section > .wrap > .steps,
+.section > .wrap > .ladder {
+  margin-inline: auto;
+}
+
+.section--paper { background: var(--paper); }
+.section--tint { background: var(--tint); }
+.section--mint { background: var(--mint); }
+.section--sky { background: var(--sky); }
+
+
+.section--center { text-align: center; }
+.section--center .measure { margin-inline: auto; }
+
+/* ---- Welcome / mission bands ---- */
+/* Used in: index.html only — "Welcome to PMCA" (.welcome-band) and "Our mission" (.mission-band). */
+.welcome-band {
+  padding: var(--space-7) 0;
+  text-align: center;
+  background: var(--tint);
+}
+
+.welcome-band h1,
+.welcome-band h2 {
+  margin-bottom: var(--space-3);
+}
+
+.welcome-band p {
+  max-width: 46rem;
+  margin-inline: auto;
+  font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+}
+
+.mission-band {
+  padding: var(--space-6) 0;
+  text-align: center;
+  background: var(--gold);
+  color: #fff;
+}
+
+.mission-band h2 { color: #fff; margin-bottom: var(--space-3); }
+
+.mission-band p {
+  max-width: 50rem;
+  margin-inline: auto;
+  font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+  line-height: 1.8;
+  color: #fff;
+}
+
+/* ---- Level ladder / timeline ---- */
+/* Used in: about.html only — the "Our history" timeline (<ul class="ladder timeline">). */
+.ladder { position: relative; }
+
+.ladder::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 7px;
+  width: 2px;
+  background: var(--stone);
+}
+
+.ladder-item {
+  position: relative;
+  padding-left: 2.5rem;
+  padding-bottom: var(--space-5);
+}
+
+.ladder-item:last-child { padding-bottom: 0; }
+
+.ladder-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  border-radius: var(--radius);
+}
+
+/* ---- Card grid (feature / value cards) ---- */
+/* Used in: index.html ("Our levels", "Why parents choose us"), about.html ("Faith & values"),
+   our-school.html ("Curriculum", "Facilities"), enrolment.html ("Documents needed"). */
+.value-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.value-card {
+  background: var(--surface);
+  border-top: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.value-card h3 {
+  font-size: clamp(1.35rem, 1.2rem + 0.4vw, 1.6rem);
+  margin-bottom: 0.5rem;
+}
+
+.value-card p {
+  font-size: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+  margin: 0;
+}
+
+.value-icon {
+  font-size: 3.75rem;
+  margin-bottom: var(--space-3);
+  color: var(--gold);
+}
+
+/* ---- Numbered steps ---- */
+/* Used in: index.html ("How to enrol" alt-section) and enrolment.html ("Steps to enrol"). */
+.steps {
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 3rem;
+  min-height: 2rem;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--gold);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: var(--radius);
+}
+
+/* ---- Alternating image / text sections ---- */
+/* Used in: index.html only — "How to enrol" (.section--mint) and "Life at PMCA"
+   (.alt-section--reverse .section--sky). */
+.alt-section {
+  padding: var(--space-7) 0;
+}
+
+.alt-section .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.alt-section--reverse .wrap {
+  flex-direction: row-reverse;
+}
+
+.alt-content {
+  flex: 1 1 320px;
+}
+
+.alt-content h2 { margin-bottom: var(--space-3); }
+
+.alt-content p { margin-bottom: var(--space-3); }
+
+.alt-media {
+  flex: 1 1 320px;
+  max-width: 460px;
+  margin-inline: auto;
+}
+
+.alt-media picture {
+  display: block;
+  aspect-ratio: 4 / 5;
+  border: 6px solid var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.alt-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ---- Image / photo card grid (campus life) ---- */
+/* Used in: index.html only — "Moments from our school" section. */
+.image-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.image-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.image-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.image-card picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-card-body {
+  padding: var(--space-4);
+}
+
+.image-card-body h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+
+.image-card-body p {
+  margin: 0;
+  font-size: var(--small);
+}
+
+/* ---- Staff cards ---- */
+/* Used in: about.html only — "Our staff" section. */
+.staff-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.staff-card {
+  border-top: 5px solid var(--gold);
+  padding: var(--space-5) var(--space-4);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.staff-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.staff-card picture {
+  display: block;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto var(--space-4);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 4px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--stone), var(--shadow-sm);
+}
+
+.staff-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+}
+
+.staff-card h3 {
+  font-size: clamp(1.35rem, 1.2rem + 0.4vw, 1.6rem);
+}
+
+.staff-card .role {
+  color: var(--muted);
+  font-size: var(--small);
+  margin-bottom: 0.5rem;
+}
+
+/* ---- Principal welcome ---- */
+/* Used in: about.html only — "Principal's welcome" section. */
+.principal-card {
+  background: var(--surface);
+  border-top: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  max-width: 100%;
+}
+
+.principal-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.principal-block picture {
+  display: block;
+  width: 230px;
+  height: 230px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 4px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--stone), var(--shadow-sm);
+  flex-shrink: 0;
+  margin-inline: auto;
+}
+
+.principal-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.principal-block .content {
+  flex: 1 1 320px;
+}
+
+.principal-block .content p {
+  font-size: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+  margin-bottom: var(--space-3);
+}
+
+/* ---- Gallery carousel ---- */
+/* Used in: gallery.html only — both "Our students" and "School environment" sliders
+   (js/carousel.js drives every [data-carousel] on the page). */
+.carousel {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--sea-deep);
+  box-shadow: var(--shadow-md);
+  /* Capped so the source photos (largest is 872px wide) aren't stretched far
+     beyond their native resolution on wide screens, which is what was
+     causing the blur — width still flexes with the viewport up to this cap. */
+  max-width: clamp(28rem, 60vw, 42rem);
+  margin-inline: auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.carousel-slide picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Carousel placeholder slide (image to be supplied later) ---- */
+/* Used in: gallery.html only — the two "coming soon" slides in the "School environment" carousel. */
+.carousel-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4);
+  background: var(--tint);
+  border: 2px dashed var(--stone);
+  color: var(--muted);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: #fff;
+  color: var(--sea-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  line-height: 1;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.15s ease-out;
+}
+
+.carousel-btn:hover { transform: translateY(-50%) scale(1.08); background: var(--gold); color: #fff; }
+
+.carousel-prev { left: var(--space-3); }
+.carousel-next { right: var(--space-3); }
+
+.carousel-status {
+  text-align: center;
+  padding: var(--space-2) 0;
+  color: var(--muted);
+}
+
+/* ---- Scrollable tables ---- */
+/* Used in: our-school.html ("A day at PMCA" timetable) and enrolment.html ("Fees", "Term dates"). */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--space-4) 0;
+  border: 1px solid var(--stone);
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.table-scroll table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+}
+
+.table-scroll th,
+.table-scroll td {
+  padding: 0.75em 1em;
+  border-bottom: 1px solid var(--stone);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table-scroll thead th {
+  background: var(--tint);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.table-scroll tbody tr:last-child td { border-bottom: none; }
+
+/* Used in: our-school.html only — the "A day at PMCA" timetable. Centers the
+   table block in the section and centers each cell's text; the Fees/Term
+   dates tables on enrolment.html keep the default left alignment. */
+.table-scroll--center {
+  max-width: clamp(32rem, 60vw, 48rem);
+  margin-inline: auto;
+}
+
+.table-scroll--center th,
+.table-scroll--center td {
+  text-align: center;
+}
+
+/* ---- Definition list ---- */
+/* Used in: contact.html only — the "Get in touch" <dl class="info-list">. */
+.info-list dt {
+  font-weight: 700;
+  color: var(--gold);
+  margin-top: var(--space-3);
+}
+
+.info-list dd {
+  margin: 0.25rem 0 0;
+}
+
+/* ---- Map embed ---- */
+/* Used in: contact.html only — the "Find us" Google Maps iframe. */
+.map-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--stone);
+  background: var(--tint);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.map-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---- Contact cards ---- */
+/* Used in: contact.html only — the two-column layout wrapping "Get in touch", "Find us"
+   and "Send us a message". */
+.contact-grid {
+  display: grid;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-card {
+  background: var(--surface);
+  border-top: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+#send-message {
+  scroll-margin-top: 88px;
+}
+
+/* ---- Contact form ---- */
+/* Used in: contact.html only — the "Send us a message" FormSubmit form. */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form-honey {
+  position: absolute;
+  left: -9999px;
+}
+
+.form-note { color: var(--muted); margin: 0; }
+
+.form-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .form-grid.two-col { grid-template-columns: 1fr 1fr; }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-field label {
+  font-weight: 700;
+  color: var(--text);
+  font-size: var(--small);
+}
+
+.form-field input,
+.form-field textarea {
+  font: inherit;
+  padding: 0.65em 0.85em;
+  border: 1px solid var(--stone);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--text);
+  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(179, 89, 0, 0.15);
+}
+
+.form-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---- Reduced motion ---- */
+/* Used in: every page — respects OS-level "reduce motion" for hero/carousel/hover animations. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
