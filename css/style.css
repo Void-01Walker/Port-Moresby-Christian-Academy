@@ -132,14 +132,14 @@ small, .small {
   outline-offset: 3px;
 }
 
-/* ---- Todo placeholder ---- */
-/* Used in: every page — the yellow-highlight <span class="todo"> markers tracked in TODO.md. */
+/* ---- Todo placeholder ----*/ 
+/* Used in: every page — the yellow-highlight <span class="todo"> markers tracked in TODO.md. 
 .todo {
   background: #FFF3B0;
   color: var(--text);
   padding: 0 0.2em;
   border-radius: var(--radius);
-}
+}----*/
 
 /* ---- Skip link ---- */
 /* Used in: every page — the <a class="skip-link"> right after <body>, before the header. */
