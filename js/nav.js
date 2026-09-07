@@ -6,6 +6,7 @@
 (function () {
   var toggle = document.getElementById('menu-toggle');
   var panel = document.getElementById('mobile-panel');
+  var closeBtn = document.getElementById('menu-close');
   if (!toggle || !panel) return;
 
   var focusable = panel.querySelectorAll('a, button');
@@ -50,4 +51,6 @@
       openPanel();
     }
   });
+
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
 })();

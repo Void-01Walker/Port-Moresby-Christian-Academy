@@ -17,6 +17,7 @@ and delete `class="todo"` from that element so the highlight disappears.
 - [ ] Elementary age range — placeholder `Ages 6–8` (confirm "Elementary" is still the right label given PNG's curriculum changes)
 - [ ] Primary age range — placeholder `Ages 9–12`
 - [ ] Enrolment fee amount (referenced but not given a figure)
+- [ ] "PMCA at a glance" numbers — currently placeholders: `150` students enrolled, `8` teaching & support staff, `8` classrooms. Update the three `data-count="..."` values in the `<ul class="stats-grid">` block in `index.html` (the numbers animate up automatically — just change the number, nothing else needs editing). The "3 school levels" figure is real (Preschool, Elementary, Primary) and doesn't need changing.
 
 ## About (about.html)
 
@@ -38,7 +39,7 @@ and delete `class="todo"` from that element so the highlight disappears.
 - [ ] Passport photo requirement (size, quantity)
 - [ ] Full fee table: registration fee and term fee for Preschool, Elementary and Primary
 - [ ] Term dates: start and end date for Terms 1–4
-- [ ] The actual enrolment form PDF needs to be placed at `/src/PMCA-Enrolment-Form.pdf`
+- [ ] The actual enrolment form PDF needs to be placed at `documents/PMCA-Enrolment-Form.pdf`
 
 ## Contact (contact.html)
 
@@ -46,10 +47,6 @@ and delete `class="todo"` from that element so the highlight disappears.
 - [ ] Office hours (repeated here)
 - [ ] Facebook page URL — currently placeholder `facebook.com`
 - [ ] **"Send us a message" form destination** — the form currently posts to `https://formsubmit.co/info@example.org`. Once the real school email is confirmed: (1) replace `info@example.org` in the `action` attribute in `contact.html`, and (2) FormSubmit will email that address a one-time confirmation link the first time someone submits the form — it must be clicked before messages start arriving. See `README.md`.
-
-## Gallery (gallery.html)
-
-- [ ] Photos of the campus, classrooms and grounds for the "School environment" carousel — it currently has the site's one hero photo plus two labelled placeholder slides ("Classroom photo coming soon" / "Campus grounds photo coming soon"); swap those two placeholder slides for real photos when available (see `.carousel-placeholder` in `gallery.html`)
 
 ## Not yet on the site at all
 

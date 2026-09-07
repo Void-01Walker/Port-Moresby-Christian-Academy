@@ -47,11 +47,11 @@
     <nav class="nav-desktop" aria-label="Primary">
       <ul>
         <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="our-school.html">Our School</a></li>
-        <li><a href="enrolment.html">Enrolment</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="src/about.html">About</a></li>
+        <li><a href="src/our-school.html">Our School</a></li>
+        <li><a href="src/enrolment.html">Enrolment</a></li>
+        <li><a href="src/gallery.html">Gallery</a></li>
+        <li><a href="src/contact.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -64,14 +64,17 @@
 </header>
 
 <div class="mobile-panel" id="mobile-panel" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-panel-close" id="menu-close" type="button" aria-label="Close menu">
+    <span aria-hidden="true">&times;</span>
+  </button>
   <nav aria-label="Mobile">
     <ul>
       <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="our-school.html">Our School</a></li>
-      <li><a href="enrolment.html">Enrolment</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/about.html">About</a></li>
+      <li><a href="src/our-school.html">Our School</a></li>
+      <li><a href="src/enrolment.html">Enrolment</a></li>
+      <li><a href="src/gallery.html">Gallery</a></li>
+      <li><a href="src/contact.html">Contact</a></li>
     </ul>
   </nav>
   <div class="mobile-panel-footer">
@@ -94,8 +97,8 @@
         <h1>A small school where every child is known by name</h1>
         <p class="measure">Christian preschool, elementary and primary education in the heart of Gerehu Stage 6.</p>
         <div class="hero-actions">
-          <a class="btn btn-gold" href="contact.html#send-message">Contact Us</a>
-          <a class="btn btn-outline" href="enrolment.html">How to enrol</a>
+          <a class="btn btn-gold" href="src/contact.html#send-message">Contact Us</a>
+          <a class="btn btn-outline" href="src/enrolment.html">How to enrol</a>
         </div>
         <div class="notice">
           <strong>Enrolments are open</strong> for <span class="todo">2027</span>. Places are limited — call the office to check availability for your child's age group.
@@ -115,6 +118,30 @@
     <div class="wrap">
       <h2>Our mission</h2>
       <p>Port Moresby Christian Academy exists to give children in Gerehu a safe, settled place to learn — where small classes mean every student is noticed, and where faith shapes how we teach, discipline and care for one another each day.</p>
+    </div>
+  </section>
+
+  <section class="section section--tint section--center">
+    <div class="wrap">
+      <h2>PMCA at a glance</h2>
+      <ul class="stats-grid">
+        <li class="stats-card">
+          <p class="stats-number todo"><span data-count="150">0</span>+</p>
+          <p class="stats-label small">Students enrolled</p>
+        </li>
+        <li class="stats-card">
+          <p class="stats-number todo"><span data-count="8">0</span></p>
+          <p class="stats-label small">Teaching &amp; support staff</p>
+        </li>
+        <li class="stats-card">
+          <p class="stats-number todo"><span data-count="8">0</span></p>
+          <p class="stats-label small">Classrooms</p>
+        </li>
+        <li class="stats-card">
+          <p class="stats-number"><span data-count="3">0</span></p>
+          <p class="stats-label small">School levels</p>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -183,7 +210,7 @@
           <li>Bring the completed form with the required documents.</li>
           <li>Pay the <span class="todo">enrolment fee</span> to confirm your child's place.</li>
         </ol>
-        <p style="margin-top: var(--space-4)"><a class="btn btn-gold" href="enrolment.html">See full enrolment details</a></p>
+        <p style="margin-top: var(--space-4)"><a class="btn btn-gold" href="src/enrolment.html">See full enrolment details</a></p>
       </div>
       <div class="alt-media">
         <picture>
@@ -200,7 +227,7 @@
         <h2>Life at PMCA</h2>
         <p>From daily devotion to graduation day, PMCA students grow up in a close-knit community. Our teachers work in small classes so every child is known, encouraged and celebrated.</p>
         <p>Take a look through our gallery to see more of student life on campus.</p>
-        <p><a class="btn-outline-sea" href="gallery.html">View the gallery</a></p>
+        <p><a class="btn-outline-sea" href="src/gallery.html">View the gallery</a></p>
       </div>
       <div class="alt-media">
         <picture>
@@ -215,7 +242,7 @@
     <div class="wrap">
       <h2>Moments from our school</h2>
       <div class="image-grid">
-        <a class="image-card" href="gallery.html">
+        <a class="image-card" href="src/gallery.html">
           <picture>
             <source srcset="images/optimized/gallery-grad1.webp" type="image/webp">
             <img src="images/optimized/gallery-grad1.jpg" alt="A student in a graduation gown and cap holding a wrapped gift at a PMCA graduation ceremony" width="872" height="809" loading="lazy">
@@ -225,7 +252,7 @@
             <p>Celebrating our students' achievements each year.</p>
           </div>
         </a>
-        <a class="image-card" href="gallery.html">
+        <a class="image-card" href="src/gallery.html">
           <picture>
             <source srcset="images/optimized/gallery-grad3.webp" type="image/webp">
             <img src="images/optimized/gallery-grad3.jpg" alt="A student in a graduation cap and gown holding a wrapped gift, smiling at a PMCA graduation ceremony" width="494" height="702" loading="lazy">
@@ -235,7 +262,7 @@
             <p>Every child's progress is recognised and celebrated.</p>
           </div>
         </a>
-        <a class="image-card" href="gallery.html">
+        <a class="image-card" href="src/gallery.html">
           <picture>
             <source srcset="images/optimized/hero.webp" type="image/webp">
             <img src="images/optimized/hero.jpg" alt="Students at Port Moresby Christian Academy" width="720" height="393" loading="lazy">
@@ -279,11 +306,11 @@
         <nav class="footer-nav" aria-label="Footer">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="our-school.html">Our School</a></li>
-            <li><a href="enrolment.html">Enrolment</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="src/about.html">About</a></li>
+            <li><a href="src/our-school.html">Our School</a></li>
+            <li><a href="src/enrolment.html">Enrolment</a></li>
+            <li><a href="src/gallery.html">Gallery</a></li>
+            <li><a href="src/contact.html">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -296,5 +323,6 @@
 </footer>
 
 <script src="js/nav.js"></script>
+<script src="js/stats.js"></script>
 </body>
 </html>
