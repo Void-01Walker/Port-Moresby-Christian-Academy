@@ -1,4 +1,4 @@
-/* Port Moresby Christian Academy — foundation styles
+/* Port Moresby Christian Academy - foundation styles */
 /* ---- Custom properties ---- */
 /* Used in: every page — the design tokens referenced by all rules below. */
 :root {
@@ -165,9 +165,11 @@ small, .small {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(21, 24, 27, 0.96);
+  background: rgba(15, 17, 19, 0.98);
   color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
 }
 
 .header-inner {
@@ -208,12 +210,35 @@ small, .small {
 
 .logo-sub {
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.8rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--gold-soft);
 }
 
 .nav-desktop { display: none; }
+
+.header-cta {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(179, 89, 0, 0.14);
+  border: 1px solid rgba(255, 217, 168, 0.45);
+  color: var(--gold-soft);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s ease-out, background 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  background: rgba(179, 89, 0, 0.22);
+  border-color: rgba(255, 217, 168, 0.75);
+}
 
 @media (min-width: 900px) {
   .nav-desktop {
@@ -225,16 +250,16 @@ small, .small {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    gap: clamp(0.35rem, 0.2rem + 0.8vw, 1.25rem);
   }
   .nav-desktop a {
     display: inline-block;
-    padding: 0.35rem 0.9rem;
+    padding: 0.3rem clamp(0.45rem, 0.3rem + 0.35vw, 0.75rem);
     border-radius: var(--radius);
     color: #fff;
     font-weight: 600;
-    font-size: clamp(1.1rem, 1rem, 1.3rem);
-    letter-spacing: 0.01em;
+    font-size: clamp(0.9rem, 0.82rem + 0.25vw, 1.05rem);
+    letter-spacing: 0;
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
   }
   .nav-desktop a:hover {
@@ -245,6 +270,10 @@ small, .small {
   .nav-desktop a.active {
     color: var(--gold-soft);
     background: rgba(209, 106, 3, 0.35);
+  }
+
+  .header-cta {
+    display: inline-flex;
   }
 }
 
@@ -332,8 +361,8 @@ html.scroll-lock body {
 
 .mobile-panel nav ul li a {
   display: block;
-  font-size: 1.35rem;
-  padding: 20px 0;
+  font-size: clamp(1.05rem, 0.9rem + 1vw, 1.3rem);
+  padding: clamp(0.8rem, 2.5vw, 1.25rem) 0;
   color: #fff;
   font-family: var(--font-display);
   font-weight: 700;
@@ -568,6 +597,22 @@ html.scroll-lock body {
   min-height: 92vh;
 }
 
+.hero-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 217, 168, 0.35);
+  color: var(--gold-soft);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 @media (max-height: 500px) and (orientation: landscape) {
   .hero { min-height: auto; }
   .hero--tall { min-height: auto; }
@@ -605,13 +650,20 @@ html.scroll-lock body {
   margin-inline: auto;
 }
 
-.hero h1 { color: #fff; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); }
+.hero h1 {
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  max-width: 820px;
+  margin-inline: auto;
+  letter-spacing: -0.03em;
+}
 
 .hero p.measure {
   color: #fff;
   margin-top: var(--space-3);
   margin-inline: auto;
   font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.4rem);
+  max-width: 42rem;
 }
 
 .hero-actions {
@@ -624,12 +676,13 @@ html.scroll-lock body {
 
 .notice {
   margin-top: var(--space-5);
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.96);
   color: var(--text);
   border-left: 4px solid var(--gold);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius);
   text-align: left;
+  box-shadow: var(--shadow-md);
 }
 
 /* ---- Sections ---- */
@@ -680,7 +733,7 @@ html.scroll-lock body {
 .welcome-band {
   padding: var(--space-7) 0;
   text-align: center;
-  background: var(--tint);
+  background: linear-gradient(180deg, #f7f8f9 0%, #f2f4f6 100%);
 }
 
 .welcome-band h1,
@@ -692,6 +745,45 @@ html.scroll-lock body {
   max-width: 46rem;
   margin-inline: auto;
   font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+}
+
+.promise-strip {
+  padding-top: var(--space-5);
+  background: var(--paper);
+}
+
+.promise-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 68rem;
+  margin: 0 auto;
+}
+
+.promise-card {
+  background: var(--surface);
+  border: 1px solid rgba(21, 24, 27, 0.06);
+  border-top: 5px solid var(--gold);
+  border-radius: 18px;
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+}
+
+.promise-card span {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+}
+
+.promise-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.promise-card p {
+  margin: 0;
 }
 
 .mission-band {
@@ -752,6 +844,73 @@ html.scroll-lock body {
   display: grid;
   gap: var(--space-5);
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.highlights-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 68rem;
+  margin-inline: auto;
+}
+
+.highlight-item {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  border-top: 5px solid var(--gold);
+}
+
+.highlight-number {
+  display: inline-flex;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.highlight-item h3 {
+  margin-bottom: 0.5rem;
+}
+
+.highlight-item p {
+  margin: 0;
+}
+
+.testimonial-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 68rem;
+  margin-inline: auto;
+}
+
+.quote-card {
+  background: var(--surface);
+  border-top: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.quote {
+  font-size: clamp(1.08rem, 1rem + 0.25vw, 1.2rem);
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0 0 var(--space-3);
+}
+
+.quote-credit {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold);
 }
 
 .value-card {
@@ -947,6 +1106,44 @@ html.scroll-lock body {
 .image-card-body p {
   margin: 0;
   font-size: var(--small);
+}
+
+.cta-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: clamp(1.6rem, 4vw, 3.1rem);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(21, 24, 27, 0.98), rgba(35, 38, 43, 0.96));
+  color: #fff;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.cta-panel h2 {
+  margin: 0;
+  text-align: left;
+  color: #fff;
+  font-size: clamp(1.8rem, 1.4rem + 1vw, 2.6rem);
+  max-width: 34rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 700;
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: flex-end;
 }
 
 /* ---- Staff cards ---- */
@@ -1299,6 +1496,10 @@ html.scroll-lock body {
   gap: var(--space-3);
 }
 
+.section-action { margin-top: var(--space-4); }
+.section-list { margin-top: var(--space-5); }
+.fee-caption { text-align: left; padding: 0.5em 1em; }
+
 /* ---- Reduced motion ---- */
 /* Used in: every page — respects OS-level "reduce motion" for hero/carousel/hover animations. */
 @media (prefers-reduced-motion: reduce) {
@@ -1308,4 +1509,78 @@ html.scroll-lock body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---- Education wireframe overrides ---- */
+:root {
+  --sea-deep: #163f52;
+  --sea: #1f6071;
+  --gold: #d9792b;
+  --gold-hover: #b85f1d;
+  --gold-soft: #ffd3a6;
+  --paper: #fffdf8;
+  --tint: #f1f6f4;
+  --mint: #e3f1ec;
+  --sky: #e6f1f5;
+  --surface: #ffffff;
+  --stone: #d9e2df;
+  --text: #17313d;
+  --muted: #4d6268;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: "Trebuchet MS", "Segoe UI", sans-serif;
+  --radius: 6px;
+  --shadow-sm: 0 2px 8px rgba(22, 63, 82, 0.08);
+  --shadow-md: 0 12px 28px rgba(22, 63, 82, 0.12);
+}
+
+body { background: var(--paper); }
+.site-header { background: var(--sea-deep); border-bottom: 4px solid var(--gold); }
+.header-inner { height: 72px; }
+.logo-img { width: 44px; height: 44px; border: 2px solid var(--gold-soft); }
+.logo-text { letter-spacing: 0.04em; }
+.logo-sub { letter-spacing: 0.08em; text-transform: uppercase; }
+.nav-desktop ul { gap: 0.25rem; }
+.nav-desktop a { font-size: 0.92rem; letter-spacing: 0; }
+.nav-desktop a.active, .nav-desktop a:hover { color: #fff; background: var(--sea); }
+.hero { min-height: 500px; background: var(--sea-deep); }
+.hero::after { background: linear-gradient(90deg, rgba(15, 45, 58, 0.92) 0%, rgba(15, 45, 58, 0.64) 48%, rgba(15, 45, 58, 0.18) 100%); }
+.hero-inner { padding-block: clamp(4rem, 8vw, 7rem); }
+.hero-text { max-width: 40rem; }
+.hero-text h1 { max-width: 15ch; font-size: clamp(2.5rem, 1.5rem + 3.5vw, 4.8rem); }
+.hero-text p { color: #e9f2ee; }
+.btn, .btn-outline, .btn-outline-sea { border-radius: 4px; font-size: 0.95rem; letter-spacing: 0.02em; text-transform: uppercase; }
+.btn-gold { background: var(--gold); color: #fff; }
+.notice { border-left: 4px solid var(--gold); border-radius: 0; background: rgba(255, 253, 248, 0.12); color: #fff; }
+.welcome-band, .mission-band { padding-block: var(--space-6); }
+.welcome-band { background: var(--gold); color: #fff; }
+.welcome-band h2, .mission-band h2 { color: inherit; margin-bottom: var(--space-2); }
+.mission-band { background: var(--sea); color: #eaf5f2; }
+.section, .alt-section { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.section h2 { margin-bottom: var(--space-3); color: var(--sea-deep); }
+.section--tint { background: var(--tint); }
+.section--paper { background: var(--paper); }
+.stats-grid, .value-grid, .image-grid, .staff-grid { gap: 1rem; }
+.stats-card, .value-card, .image-card, .staff-card { border: 1px solid var(--stone); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.stats-card { background: var(--sea-deep); border-color: var(--sea-deep); color: #fff; }
+.stats-number { color: var(--gold-soft); }
+.stats-label { color: #eaf5f2; }
+.value-card, .staff-card { background: var(--surface); padding: var(--space-4); }
+.value-card h3, .staff-card h3, .image-card h3 { color: var(--sea-deep); }
+.value-icon { display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: var(--space-3); border-radius: 50%; background: var(--mint); font-size: 1.4rem; }
+.steps li { border-color: var(--gold); }
+.steps li::before { background: var(--gold); }
+.alt-section .wrap { gap: clamp(2rem, 6vw, 6rem); }
+.alt-section--reverse { background: var(--sky); }
+.image-card, .staff-card { overflow: hidden; }
+.image-card-body { padding: var(--space-3); background: var(--surface); }
+.table-scroll { border: 1px solid var(--stone); box-shadow: var(--shadow-sm); }
+.table-scroll thead th { background: var(--sea-deep); color: #fff; }
+.table-scroll tbody tr:nth-child(even) td { background: var(--tint); }
+.site-footer { background: var(--sea-deep); }
+.footer-top { border-top: 4px solid var(--gold); }
+
+@media (max-width: 899px) {
+  .header-inner { height: 64px; }
+  .hero, .hero--tall { min-height: 560px; }
+  .hero-text h1 { max-width: 12ch; }
 }
